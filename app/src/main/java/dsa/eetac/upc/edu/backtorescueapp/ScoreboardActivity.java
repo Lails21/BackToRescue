@@ -36,6 +36,16 @@ public class ScoreboardActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading...");
+        progressDialog.setMessage("Waiting...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.show();
+
+        myapirest = APIRest.createAPIRest();
+
         textusername=findViewById(R.id.namerec);
         textdamage=findViewById(R.id.damagerec);
         textdefense=findViewById(R.id.defenserec);
@@ -43,6 +53,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         textlevel=findViewById(R.id.levelrec);
         textmana=findViewById(R.id.manarec);
         textmoney=findViewById(R.id.moneyrec);
+
+        progressDialog.hide();
 
 
     }
