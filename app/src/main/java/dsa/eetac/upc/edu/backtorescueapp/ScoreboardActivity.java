@@ -1,5 +1,6 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ScoreboardActivity extends AppCompatActivity {
 
@@ -28,7 +35,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
-        Intent intent= getIntent();
+        setupActionBar();
 
         recyclerView = (RecyclerView) findViewById(R.id.Recycler_View);
         recycler = new Recycler(this);
@@ -36,6 +43,15 @@ public class ScoreboardActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        textusername=findViewById(R.id.namerec);
+        textdamage=findViewById(R.id.damagerec);
+        textdefense=findViewById(R.id.defenserec);
+        texthealth=findViewById(R.id.healthrec);
+        textlevel=findViewById(R.id.levelrec);
+        textmana=findViewById(R.id.manarec);
+        textmoney=findViewById(R.id.moneyrec);
+
+        Intent intent= getIntent();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
@@ -46,16 +62,34 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         myapirest = APIRest.createAPIRest();
 
-        textusername=findViewById(R.id.namerec);
-        textdamage=findViewById(R.id.damagerec);
-        textdefense=findViewById(R.id.defenserec);
-        texthealth=findViewById(R.id.healthrec);
-        textlevel=findViewById(R.id.levelrec);
-        textmana=findViewById(R.id.manarec);
-        textmoney=findViewById(R.id.moneyrec);
-
         progressDialog.hide();
 
+        }
 
+      private void getCharacters(){
+        Call<List<Character>> charactercall = myapirest.getScoreboard();
+        charactercall.enqueue(new Callback<List<Character>>() {
+            @Override
+            public void onResponse(Call<List<Character>> call, Response<List<Character>> response) {
+                if(response.isSuccessful()){
+                    List<Character> newcharacterlist = response.body();
+                    recycler.addElements(newcharacterlist);
+                }
+                progressDialog.hide();
+            }
+
+            @Override
+            public void onFailure(Call<List<Character>> call, Throwable t) {
+
+            }
+        });
+      }
+
+    private void setupActionBar(){
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("SCOREBOARD");
+        }
     }
 }

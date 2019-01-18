@@ -1,5 +1,7 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
+import java.util.List;
+
 public class Character {
     String username;
     int health;
@@ -18,6 +20,8 @@ public class Character {
         this.level = level;
         this.money = money;
     }
+
+
 
     public int getHealth() {
         return health;

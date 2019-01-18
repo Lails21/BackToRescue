@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private APIRest myapirest;
-    public User user = new User("Laia", "munoz");
+    public User user = new User("Roger", "Sanchez");
     TextView textViewName;
     TextView textViewMoney;
     TextView textViewLevel;
@@ -67,15 +67,18 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Character> call, Response<Character> response) {
                 Log.i("BackToRescue" , user.username+ response.message());
                 Character character = response.body();
-               // textViewName.setText(character.username);
-                //textViewMoney.setText((int)character.money);
-                //textViewLevel.setText(character.level);
+
+                Log.i ("BackToRescue", "username: "+character.username);
+                textViewName.setText(character.username);
+                textViewMoney.setText(""+character.money);
+                textViewLevel.setText(""+character.level);
                 progressDialog.hide();
             }
 
             @Override
             public void onFailure(Call<Character> call, Throwable t) {
                 Log.i("BackToRescue", "onFailure"+t.getMessage());
+                progressDialog.hide();
             }
         });
 

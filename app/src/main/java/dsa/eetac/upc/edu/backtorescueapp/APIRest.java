@@ -3,6 +3,8 @@ package dsa.eetac.upc.edu.backtorescueapp;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -16,6 +18,8 @@ public interface APIRest {
     @POST("authentication/login")
     Call<Character> getUser(@Body User user);
 
+    @GET("scoreboard/scoreboard")
+    Call<List<Character>> getScoreboard();
 
     static APIRest createAPIRest() {
         Gson gson = new GsonBuilder()
