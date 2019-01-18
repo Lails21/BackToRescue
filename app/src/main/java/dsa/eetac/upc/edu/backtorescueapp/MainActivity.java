@@ -101,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void logout(){
+        Call<Void> logoutcall = myapirest.logout();
+        logoutcall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 }

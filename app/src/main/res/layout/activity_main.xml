@@ -169,9 +169,9 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
-                            android:background="@drawable/element_outline"
+                            android:background="@drawable/element_outline1"
                             android:text="Scoreboard"
-                            android:textColor="@color/colorAccent" />
+                            android:textColor="@color/colorPrimaryDark" />
 
                         <Button
                             android:id="@+id/statesBtn"
@@ -199,22 +199,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="274dp"
         android:layout_weight="1"
         android:background="@drawable/element_outline"
         android:text="Log Out"
         android:textColor="@color/colorAccent" />
+
     <Button
         android:id="@+id/playBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="19dp"
-        android:text="PLAY"
         android:layout_weight="1"
         android:background="@drawable/element_outline"
-        android:textColor="@color/colorAccent"/>
+        android:text="PLAY"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

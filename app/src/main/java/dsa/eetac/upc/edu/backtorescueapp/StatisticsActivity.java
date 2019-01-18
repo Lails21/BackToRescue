@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -13,9 +14,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StatisticsActivity  extends AppCompatActivity {
+
     private APIRest myapirest;
     ProgressDialog progressDialog;
-
 
     public User user = new User("Laia", "Muñoz");
     TextView textusername;
@@ -52,28 +53,30 @@ public class StatisticsActivity  extends AppCompatActivity {
 
         myapirest = APIRest.createAPIRest();
 
-        getUserStats();
-
+        getUserStats(user.username);
     }
-    private void getUserStats(){
-        Call<Character> statsCall =myapirest.getUserStats(user.username);
+
+    private void getUserStats(String username){
+        Call<Character> statsCall = myapirest.getUserStats(username);
         statsCall.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 Character characters =response.body();
 
                 textusername.setText(characters.username);
-                textdamage.setText(characters.damage);
-                textdefense.setText(characters.defense);
-                texthealth.setText(characters.health);
-                textlevel.setText(characters.level);
-                textmana.setText(characters.mana);
-                textmoney.setText(""+characters.money);
+                textdamage.setText(String.valueOf("Damage: "+characters.damage));
+                textdefense.setText(String.valueOf("Defense: "+characters.defense));
+                texthealth.setText(String.valueOf("Health: "+characters.health));
+                textlevel.setText(String.valueOf("Level: "+characters.level));
+                textmana.setText(String.valueOf("Mana: "+characters.mana));
+                textmoney.setText(String.valueOf("Money: "+characters.money));
+                progressDialog.hide();
             }
 
             @Override
             public void onFailure(Call<Character> call, Throwable t) {
-
+                Log.i("BackToRescue", "Fallada stats"+t.getMessage());
+                progressDialog.hide();
             }
         });
     }
