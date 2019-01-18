@@ -22,7 +22,6 @@ public class ScoreboardActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     ProgressDialog progressDialog;
 
-
     TextView textusername;
     TextView textdamage;
     TextView textdefense;
@@ -62,11 +61,11 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         myapirest = APIRest.createAPIRest();
 
-        progressDialog.hide();
+        getScoreboard();
 
         }
 
-      private void getCharacters(){
+      private void getScoreboard(){
         Call<List<Character>> charactercall = myapirest.getScoreboard();
         charactercall.enqueue(new Callback<List<Character>>() {
             @Override

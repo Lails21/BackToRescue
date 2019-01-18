@@ -52,7 +52,6 @@ public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder>  {
         this.context = context;
     }
 
-
     @Override
     public Recycler.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
@@ -63,12 +62,13 @@ public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder>  {
     @Override
     public void onBindViewHolder(Recycler.ViewHolder holder, int position) {
         Character characterdata = ((Character) data.get(position));
-        holder.usernameTextView.setText("Username: " +characterdata.username);
+        holder.usernameTextView.setText(characterdata.username);
         holder.damageTextView.setText("Damage: " +characterdata.damage);
         holder.defenseTextView.setText("Defense: " +characterdata.defense);
         holder.healthTextView.setText("Health: " +characterdata.health);
         holder.levelTextView.setText("Level: " +characterdata.level);
         holder.moneyTextView.setText("Money: " +characterdata.money);
+        holder.manaTextView.setText("Mana: " +characterdata.mana);
     }
 
     @Override

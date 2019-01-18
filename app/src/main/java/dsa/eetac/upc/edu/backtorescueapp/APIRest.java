@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIRest {
     String BASE_URL = "http://147.83.7.204:8080/dsaApp/";
@@ -20,6 +21,9 @@ public interface APIRest {
 
     @GET("scoreboard/scoreboard")
     Call<List<Character>> getScoreboard();
+
+    @GET("states/statsbyusername/{username}")
+    Call<Character> getUserStats(@Path("username") String username);
 
     static APIRest createAPIRest() {
         Gson gson = new GsonBuilder()

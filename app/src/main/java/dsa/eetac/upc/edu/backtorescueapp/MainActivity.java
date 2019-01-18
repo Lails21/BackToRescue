@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private APIRest myapirest;
-    public User user = new User("Roger", "Sanchez");
+    public User user = new User("Laia", "Muñoz");
     TextView textViewName;
     TextView textViewMoney;
     TextView textViewLevel;
@@ -31,12 +31,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Buton
+        //Buton scoreboard
         final Button button =(Button)findViewById(R.id.sbbtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ScoreboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Buton logout
+        final Button button1 =(Button)findViewById(R.id.logoutBtn);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        //Buton states
+        final Button button2 =(Button)findViewById(R.id.statesBtn);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), StatisticsActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
         characterCall.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
-                Log.i("BackToRescue" , user.username+ response.message());
+                Log.i("BackToRescueonresponse" , user.username+ response.message());
                 Character character = response.body();
 
-                Log.i ("BackToRescue", "username: "+character.username);
+                Log.i ("BackToRescue1", "username: "+character.username);
                 textViewName.setText(character.username);
                 textViewMoney.setText(""+character.money);
                 textViewLevel.setText(""+character.level);

@@ -33,7 +33,7 @@
                     android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
                     android:elevation="1dp"
-                    android:src="@drawable/profile" />
+                    android:src="@drawable/profile2" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
-                                android:text="Gamer"
+                                android:text="Welcome to BackToRescue"
                                 android:textSize="17sp" />
 
                             <TextView
@@ -77,7 +77,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="20dp"
-                                android:text="Gamer 2"
+                                android:text="Have fun!"
                                 android:textAlignment="center"
                                 android:textSize="15sp"
                                 android:textStyle="italic" />
@@ -146,7 +146,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Levels"
+                                android:text="Level"
                                 android:textSize="20sp" />
 
                         </LinearLayout>
@@ -174,13 +174,14 @@
                             android:textColor="@color/colorAccent" />
 
                         <Button
+                            android:id="@+id/statesBtn"
                             android:layout_width="125dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/element_outline1"
-                            android:text="PLAY"
+                            android:text="States"
                             android:textColor="@color/colorPrimaryDark" />
 
                     </LinearLayout>
@@ -198,8 +199,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="274dp"
+        android:layout_weight="1"
+        android:background="@drawable/element_outline"
         android:text="Log Out"
+        android:textColor="@color/colorAccent" />
+    <Button
+        android:id="@+id/playBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:text="PLAY"
         android:layout_weight="1"
         android:background="@drawable/element_outline"
         android:textColor="@color/colorAccent"/>
