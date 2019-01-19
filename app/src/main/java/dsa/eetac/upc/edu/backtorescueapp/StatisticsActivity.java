@@ -18,7 +18,8 @@ public class StatisticsActivity  extends AppCompatActivity {
     private APIRest myapirest;
     ProgressDialog progressDialog;
 
-    public User user = new User("Laia", "Muñoz");
+    //public User user = new User("Laia", "Muñoz");
+    public String user23;
     TextView textusername;
     TextView textdamage;
     TextView textdefense;
@@ -42,6 +43,7 @@ public class StatisticsActivity  extends AppCompatActivity {
         textmoney=findViewById(R.id.moneysts);
 
         Intent intent= getIntent();
+        user23 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
@@ -53,7 +55,7 @@ public class StatisticsActivity  extends AppCompatActivity {
 
         myapirest = APIRest.createAPIRest();
 
-        getUserStats(user.username);
+        getUserStats(user23);
     }
 
     private void getUserStats(String username){

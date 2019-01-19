@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.logging.Logger;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,8 +20,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private APIRest myapirest;
-    public User user = new User("Laia", "Muñoz");
+    //public User user = new User("Laia", "Muñoz");
+    public User user;
+    public String user2;
+    public String password2;
     TextView textViewName;
     TextView textViewMoney;
     TextView textViewLevel;
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), StatisticsActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, user2);
                 startActivity(intent);
             }
         });
@@ -64,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
         textViewLevel = findViewById(R.id.leveltxt);
 
         Intent intent = getIntent();
+        user2 = intent.getStringExtra("User");
+        String[] userparts = user2.split(":");
+        //updateTrackTitle.setText(userparts[1]);
+        password2 = intent.getStringExtra("Password");
+        String[] passwordparts = password2.split(":");
+        //updateTrackSinger.setText(passwordparts[1]);
+
+
+
+
+        user = new User(user2, password2);
+
+        Log.i("BackToRescue", "User2statssi: " +user2);
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
