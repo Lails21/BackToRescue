@@ -20,6 +20,9 @@ public interface APIRest {
     @POST("authentication/login")
     Call<Character> getUser(@Body User user);
 
+    @POST("authentication/signin")
+    Call <User> createNewUser (@Body User user);
+
     @GET("scoreboard/scoreboard")
     Call<List<Character>> getScoreboard();
 
@@ -28,6 +31,8 @@ public interface APIRest {
 
     @PUT()
     Call <Void> logout();
+
+
 
     static APIRest createAPIRest() {
         Gson gson = new GsonBuilder()

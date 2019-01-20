@@ -13,14 +13,22 @@
     tools:context=".LoginActivity">
 
 
+    <Button
+        android:id="@+id/signinboton"
+        android:layout_width="181dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:text="SIGN IN!!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/logintexto"
-        android:layout_width="341dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="27dp"
+        android:layout_width="329dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordtexto"
@@ -30,27 +38,25 @@
 
     <EditText
         android:id="@+id/passwordtexto"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="73dp"
+        android:layout_width="328dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/loginboton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logintexto" />
+
     <Button
         android:id="@+id/loginboton"
-        android:layout_width="203dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginEnd="154dp"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
         android:text="LOG IN!!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/signinboton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordtexto" />
+
 </android.support.constraint.ConstraintLayout>
