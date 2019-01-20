@@ -78,16 +78,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
-                                android:text="Have fun!"
-                                android:textAlignment="center"
-                                android:textSize="15sp"
-                                android:textStyle="italic" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
                                 android:text="Barcelona, Spain"
                                 android:textSize="18sp"
@@ -183,7 +173,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/element_outline1"
-                            android:text="States"
+                            android:text="Stats"
                             android:textColor="@color/colorPrimaryDark" />
 
                     </LinearLayout>
@@ -201,8 +191,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="274dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="272dp"
         android:layout_weight="1"
         android:background="@drawable/element_outline"
         android:text="Log Out"
@@ -214,7 +204,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="19dp"
         android:layout_weight="1"
         android:background="@drawable/element_outline"

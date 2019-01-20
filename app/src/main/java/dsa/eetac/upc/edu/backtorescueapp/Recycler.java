@@ -1,22 +1,18 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder>  {
-    private List<Character> data;
+    private List<Player> data;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -42,8 +38,8 @@ public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder>  {
         }
     }
 
-    public void addElements(List<Character> characterList) {
-        data.addAll(characterList);
+    public void addElements(List<Player> playerList) {
+        data.addAll(playerList);
         notifyDataSetChanged();
     }
 
@@ -61,7 +57,7 @@ public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(Recycler.ViewHolder holder, int position) {
-        Character characterdata = ((Character) data.get(position));
+        Player characterdata = ((Player) data.get(position));
         holder.usernameTextView.setText(characterdata.username);
         holder.damageTextView.setText("Damage: " +characterdata.damage);
         holder.defenseTextView.setText("Defense: " +characterdata.defense);

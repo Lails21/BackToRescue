@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -59,11 +57,11 @@ public class StatisticsActivity  extends AppCompatActivity {
     }
 
     private void getUserStats(String username){
-        Call<Character> statsCall = myapirest.getUserStats(username);
-        statsCall.enqueue(new Callback<Character>() {
+        Call<Player> statsCall = myapirest.getUserStats(username);
+        statsCall.enqueue(new Callback<Player>() {
             @Override
-            public void onResponse(Call<Character> call, Response<Character> response) {
-                Character characters =response.body();
+            public void onResponse(Call<Player> call, Response<Player> response) {
+                Player characters =response.body();
 
                 textusername.setText(characters.username);
                 textdamage.setText(String.valueOf("Damage: "+characters.damage));
@@ -76,7 +74,7 @@ public class StatisticsActivity  extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Character> call, Throwable t) {
+            public void onFailure(Call<Player> call, Throwable t) {
                 Log.i("BackToRescue", "Fallada stats"+t.getMessage());
                 progressDialog.hide();
             }
@@ -87,7 +85,7 @@ public class StatisticsActivity  extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("SCOREBOARD");
+            actionBar.setTitle("STATISTICS");
         }
     }
 }

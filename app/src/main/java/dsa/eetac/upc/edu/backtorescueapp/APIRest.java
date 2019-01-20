@@ -18,19 +18,19 @@ public interface APIRest {
     String BASE_URL = "http://147.83.7.204:8080/dsaApp/";
 
     @POST("authentication/login")
-    Call<Character> getUser(@Body User user);
+    Call<Player> getUser(@Body User user);
 
     @POST("authentication/signin")
-    Call <User> createNewUser (@Body User user);
+    Call <Void> createNewUser (@Body User user);
 
     @GET("scoreboard/scoreboard")
-    Call<List<Character>> getScoreboard();
+    Call<List<Player>> getScoreboard();
 
     @GET("states/statsbyusername/{username}")
-    Call<Character> getUserStats(@Path("username") String username);
+    Call<Player> getUserStats(@Path("username") String username);
 
-    @PUT()
-    Call <Void> logout();
+    @POST("authentication/Logout")
+    Call <Void> logout(@Body Player player);
 
 
 

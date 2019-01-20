@@ -1,6 +1,5 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.logging.Logger;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewMoney;
     TextView textViewLevel;
     ProgressDialog progressDialog;
+    Player player = null;
 
 
     @Override
@@ -52,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), LoginActivity.class);
-                startActivity(intent);
+                logout();
             }
         });
         //Buton states
@@ -101,22 +96,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void getUser(User user){
 
-        Call<Character> characterCall = myapirest.getUser(user);
-        characterCall.enqueue(new Callback<Character>() {
+        Call<Player> characterCall = myapirest.getUser(user);
+        characterCall.enqueue(new Callback<Player>() {
             @Override
-            public void onResponse(Call<Character> call, Response<Character> response) {
+            public void onResponse(Call<Player> call, Response<Player> response) {
                 Log.i("BackToRescueonresponse" , user.username+ response.message());
-                Character character = response.body();
+                player = response.body();
 
-                Log.i ("BackToRescue1", "username: "+character.username);
-                textViewName.setText(character.username);
-                textViewMoney.setText(""+character.money);
-                textViewLevel.setText(""+character.level);
+                Log.i ("BackToRescue1", "username: "+ player.username);
+                textViewName.setText(player.username);
+                textViewMoney.setText(String.valueOf(player.money));
+                textViewLevel.setText(String.valueOf(player.level));
                 progressDialog.hide();
             }
 
             @Override
-            public void onFailure(Call<Character> call, Throwable t) {
+            public void onFailure(Call<Player> call, Throwable t) {
                 Log.i("BackToRescue", "onFailure"+t.getMessage());
                 progressDialog.hide();
             }
@@ -125,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logout(){
-        Call<Void> logoutcall = myapirest.logout();
+        Call<Void> logoutcall = myapirest.logout(player);
         logoutcall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -137,5 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        finish();
     }
 }

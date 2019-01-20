@@ -1,6 +1,5 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -66,19 +65,19 @@ public class ScoreboardActivity extends AppCompatActivity {
         }
 
       private void getScoreboard(){
-        Call<List<Character>> charactercall = myapirest.getScoreboard();
-        charactercall.enqueue(new Callback<List<Character>>() {
+        Call<List<Player>> charactercall = myapirest.getScoreboard();
+        charactercall.enqueue(new Callback<List<Player>>() {
             @Override
-            public void onResponse(Call<List<Character>> call, Response<List<Character>> response) {
+            public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
                 if(response.isSuccessful()){
-                    List<Character> newcharacterlist = response.body();
+                    List<Player> newcharacterlist = response.body();
                     recycler.addElements(newcharacterlist);
                 }
                 progressDialog.hide();
             }
 
             @Override
-            public void onFailure(Call<List<Character>> call, Throwable t) {
+            public void onFailure(Call<List<Player>> call, Throwable t) {
 
             }
         });

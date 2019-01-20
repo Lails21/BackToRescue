@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private String user3;
     private String password3;
+    User user;
     public boolean registered;
 
     @Override
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("BackToRescue1", "Passwordtxtsign: " + passwordtxt3);
                 password3 = passwordtxt3.getText().toString();
                 Log.i("BackToRescue1", "Password3sign: " + password3);
-                User user = new User(user3, password3);
+                user = new User(user3, password3);
                 Log.i("BackToRescue1", "User: " + user);
                 Log.i("BackToRescue1", "PreBien: ");
                 createNewUser(user);
@@ -83,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("BackToRescue1", "Passwordtxt: " + passwordtxt2);
                 password2 = passwordtxt2.getText().toString();
                 Log.i("BackToRescue1", "Password2: " + password2);
-                User user = new User(user2, password2);
+                user = new User(user2, password2);
                 Log.i("BackToRescue1", "User: " + user);
 
                 getUser(user);
@@ -96,19 +95,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getUser(User user) {
 
-        Call<Character> characterCall = myapirest.getUser(user);
-        characterCall.enqueue(new Callback<Character>() {
+        Call<Player> characterCall = myapirest.getUser(user);
+        characterCall.enqueue(new Callback<Player>() {
 
-            public void onResponse(Call<Character> call, Response<Character> response) {
+            public void onResponse(Call<Player> call, Response<Player> response) {
                 Log.i("BackToRescueonresponse", user.username + response.message());
-                Character character = response.body();
+                Player player = response.body();
 
                 try {
-                    Log.i("BackToRescue1", "username: " + character.username);
+                    Log.i("BackToRescue1", "username: " + player.username);
                     //usertext = findViewById(R.id.email);
                     //user2= String.valueOf(usertext);
-                    money = character.money;
-                    Log.i("BackToRescue1", "Damage: " + character.money);
+                    money = player.money;
+                    Log.i("BackToRescue1", "Damage: " + player.money);
                     if (money != 0) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //Para pasar el string de un a otro activity se lo defines de esta manera
@@ -116,12 +115,11 @@ public class LoginActivity extends AppCompatActivity {
                         //intent.putExtra(EXTRA_MESSAGE, user2);
                         intent.putExtra("User", user2);
                         intent.putExtra("Password", password2);
-                        Log.i("BackToRescue1", "SIIIIIIIII: " + character.username);
+                        Log.i("BackToRescue1", "SIIIIIIIII: " + player.username);
                         startActivity(intent);
                         //progressDialog.hide();
-                        //Log.i("BackToRescue1", "SIIIIIIIII: " + character.username);
+                        //Log.i("BackToRescue1", "SIIIIIIIII: " + player.username);
                     }
-
 
                 } catch (Exception e){
                     Log.i("BackToRescue1", "Noooo: ");
@@ -131,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Character> call, Throwable t) {
+            public void onFailure(Call<Player> call, Throwable t) {
                 Log.i("BackToRescueis", "onFailure" + t.getMessage());
                 progressDialog.hide();
             }
@@ -139,12 +137,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void createNewUser(User user) {
-        Call<User> userCall=myapirest.createNewUser(user);
-        userCall.enqueue(new Callback<User>() {
+        Call<Void> userCall=myapirest.createNewUser(user);
+        userCall.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                if(response.isSuccessful()) {
-                   finish();
+                   
                }
                else{
                    Log.i("BackToRescue2", "Bien4: ");
@@ -163,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.e("No api connection: ", t.getMessage());
 
                 //Show the alert dialog

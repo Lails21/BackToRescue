@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatDialogFragment;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Log In")
+            builder.setTitle(this.getClass().getName())
                     .setMessage("User or password incorrect")
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override

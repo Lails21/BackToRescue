@@ -2,7 +2,7 @@ package dsa.eetac.upc.edu.backtorescueapp;
 
 import java.util.List;
 
-public class Character {
+public class Player {
     String username;
     int health;
     int mana;
@@ -11,7 +11,7 @@ public class Character {
     int level;
     double money;
 
-    public Character(String username, int health, int mana, int damage, int defense, int level, double money) {
+    public Player(String username, int health, int mana, int damage, int defense, int level, double money) {
         this.username = username;
         this.health = health;
         this.mana = mana;
@@ -79,5 +79,5 @@ public class Character {
         this.username = username;
     }
 
-    public Character(){}
+    public Player(){}
 }
