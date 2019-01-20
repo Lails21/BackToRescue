@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private String user3;
     private String password3;
+    public boolean registered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,35 +139,27 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void createNewUser(User user) {
-
-        Log.i("BackToRescue1", "Bien1: ");
         Call<User> userCall=myapirest.createNewUser(user);
-            Log.i("BackToRescue2", "Bien2: ");
         userCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.i("BackToRescue1", "Bien2.1: ");
-                if(response.isSuccessful()){
-                    Log.i("BackToRescue1", "Bien3: ");
-                    Toast.makeText(LoginActivity.this, "User created", Toast.LENGTH_LONG).show();
-                    //finish();
+               if(response.isSuccessful()) {
+                   finish();
+               }
+               else{
+                   Log.i("BackToRescue2", "Bien4: ");
+                   //Show the alert dialog
+                   AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
 
-                }
-                else{
-                    Log.e("No api connection", response.message());
-                    Log.i("BackToRescue2", "Bien4: ");
-                    //Show the alert dialog
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+                   alertDialogBuilder
+                           .setTitle("Error")
+                           .setMessage(response.message())
+                           .setCancelable(false)
+                           .setPositiveButton("OK", (dialog, which) -> finish());
 
-                    alertDialogBuilder
-                            .setTitle("Error")
-                            .setMessage(response.message())
-                            .setCancelable(false)
-                            .setPositiveButton("OK", (dialog, which) -> finish());
-
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
-                }
+                   AlertDialog alertDialog = alertDialogBuilder.create();
+                   alertDialog.show();
+               }
             }
 
             @Override
@@ -188,7 +181,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
@@ -196,5 +188,6 @@ public class LoginActivity extends AppCompatActivity {
        ExampleDialog exampleDialog = new ExampleDialog();
        exampleDialog.show(getSupportFragmentManager(), "User or password incorrect");
     }
+
 }
 
