@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
         userCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("BackToRescue1", "Bien2.1: ");
                 if(response.isSuccessful()){
                     Log.i("BackToRescue1", "Bien3: ");
                     Toast.makeText(LoginActivity.this, "User created", Toast.LENGTH_LONG).show();
