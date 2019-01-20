@@ -34,7 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     private String password3;
     User user;
     public boolean registered;
-
+    public EditText usertext3;
+    public EditText usertext2;
+    public EditText passwordtxt3;
+    public EditText passwordtxt2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +52,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.i("BackToRescue1", "Entra");
-                EditText usertext3 = (EditText) findViewById(R.id.logintexto);
+                usertext3 = (EditText) findViewById(R.id.logintexto);
                 Log.i("BackToRescue1", "Usertextsign: " + usertext3);
                 //Guardamos el valor del editText una variable tipo String
                 user3 = usertext3.getText().toString();
                 Log.i("BackToRescue1", "User3sign: " + user3);
-                EditText passwordtxt3 = (EditText) findViewById(R.id.passwordtexto);
+                passwordtxt3 = (EditText) findViewById(R.id.passwordtexto);
                 Log.i("BackToRescue1", "Passwordtxtsign: " + passwordtxt3);
                 password3 = passwordtxt3.getText().toString();
                 Log.i("BackToRescue1", "Password3sign: " + password3);
@@ -73,12 +76,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.i("BackToRescue1", "Entra");
-                EditText usertext2 = (EditText) findViewById(R.id.logintexto);
+                usertext2 = (EditText) findViewById(R.id.logintexto);
                 Log.i("BackToRescue1", "Usertext: " + usertext2);
                 //Guardamos el valor del editText una variable tipo String
                 user2 = usertext2.getText().toString();
                 Log.i("BackToRescue1", "User2: " + user2);
-                EditText passwordtxt2 = (EditText) findViewById(R.id.passwordtexto);
+                passwordtxt2 = (EditText) findViewById(R.id.passwordtexto);
                 Log.i("BackToRescue1", "Passwordtxt: " + passwordtxt2);
                 password2 = passwordtxt2.getText().toString();
                 Log.i("BackToRescue1", "Password2: " + password2);
@@ -116,6 +119,8 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("User", user2);
                         intent.putExtra("Password", password2);
                         Log.i("BackToRescue1", "SIIIIIIIII: " + player.username);
+                        usertext2.setText(String.valueOf(""));
+                        passwordtxt2.setText(String.valueOf(""));
                         startActivity(intent);
                         //progressDialog.hide();
                         //Log.i("BackToRescue1", "SIIIIIIIII: " + player.username);
@@ -142,7 +147,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                if(response.isSuccessful()) {
-                   
+                   usertext3.setText(String.valueOf(""));
+                   passwordtxt3.setText(String.valueOf(""));
                }
                else{
                    Log.i("BackToRescue2", "Bien4: ");
