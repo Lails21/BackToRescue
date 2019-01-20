@@ -155,26 +155,42 @@
                         android:weightSum="2">
 
                         <Button
-                            android:id="@+id/sbbtn"
+                            android:id="@+id/objectbtn"
                             android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/element_outline1"
+                            android:text="Objects"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="9sp" />
+
+
+                        <Button
+                            android:id="@+id/sbbtn"
+                            android:layout_width="152dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/element_outline1"
                             android:text="Scoreboard"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="10sp" />
+
 
                         <Button
                             android:id="@+id/statesBtn"
-                            android:layout_width="125dp"
+                            android:layout_width="76dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/element_outline1"
                             android:text="Stats"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="10sp" />
 
                     </LinearLayout>
 
