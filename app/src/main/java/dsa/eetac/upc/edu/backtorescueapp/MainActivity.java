@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.dsa.BackToRescue.UnityPlayerActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ScoreboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final Button playbutton =(Button)findViewById(R.id.playBtn);
+        playbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UnityPlayerActivity.class);
                 startActivity(intent);
             }
         });

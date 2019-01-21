@@ -1,5 +1,6 @@
 package dsa.eetac.upc.edu.backtorescueapp;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -72,7 +73,16 @@ public class ObjetoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ObjetoActivity.this);
 
+                alertDialogBuilder
+                        .setTitle("Error")
+                        .setMessage("ERROR")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", (dialog, which) -> finish());
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }
