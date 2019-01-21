@@ -61,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Buton objetos
+        final Button button3 =(Button)findViewById(R.id.objectbtn);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ObjetoActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, user2);
+                startActivity(intent);
+            }
+        });
         textViewName = findViewById(R.id.nametxt);
         textViewMoney = findViewById(R.id.moneytxt);
         textViewLevel = findViewById(R.id.leveltxt);

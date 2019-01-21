@@ -23,12 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
-            android:name=".MainActivity"
-            >
-        </activity>
-        <activity android:name=".ScoreboardActivity" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".StatisticsActivity" android:parentActivityName=".MainActivity"></activity>
+            android:name=".ScoreboardActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StatisticsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ObjetoActivity"></activity>
     </application>
 
 </manifest>

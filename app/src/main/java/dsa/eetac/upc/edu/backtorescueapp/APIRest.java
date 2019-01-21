@@ -32,7 +32,8 @@ public interface APIRest {
     @POST("authentication/Logout")
     Call <Void> logout(@Body Player player);
 
-
+    @GET("objects/objectsbyusername/{username}")
+    Call <List<Objeto>> getObjetoUser(@Path("username") String username);
 
     static APIRest createAPIRest() {
         Gson gson = new GsonBuilder()
