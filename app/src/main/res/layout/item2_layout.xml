@@ -5,26 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="0dp">
 
     <TextView
         android:id="@+id/imageobjeto"
-        android:layout_width="119dp"
-        android:layout_height="34dp"
+        android:layout_width="190dp"
+        android:layout_height="38dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="276dp"
-        android:layout_marginBottom="384dp"
         android:text="Image"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomobjeto" />
 
     <TextView
         android:id="@+id/nomobjeto"
-        android:layout_width="107dp"
+        android:layout_width="188dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -34,7 +33,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageobjeto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.68" />

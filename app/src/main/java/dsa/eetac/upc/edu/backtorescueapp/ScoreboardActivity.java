@@ -33,7 +33,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
-        setupActionBar();
+        //setupActionBar();
 
         recyclerView = (RecyclerView) findViewById(R.id.Recycler_View);
         recycler = new Recycler(this);
@@ -83,11 +83,5 @@ public class ScoreboardActivity extends AppCompatActivity {
         });
       }
 
-    private void setupActionBar(){
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("SCOREBOARD");
-        }
-    }
+
 }

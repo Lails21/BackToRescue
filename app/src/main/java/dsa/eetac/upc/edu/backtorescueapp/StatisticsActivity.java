@@ -30,7 +30,7 @@ public class StatisticsActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistics);
-        setupActionBar();
+        //setupActionBar();
 
         textusername=findViewById(R.id.namests);
         textdamage=findViewById(R.id.damagests);
@@ -81,11 +81,5 @@ public class StatisticsActivity  extends AppCompatActivity {
         });
     }
 
-    private void setupActionBar(){
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("STATISTICS");
-        }
-    }
+
 }

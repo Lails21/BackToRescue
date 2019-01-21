@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -149,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                if(response.isSuccessful()) {
                    usertext3.setText(String.valueOf(""));
                    passwordtxt3.setText(String.valueOf(""));
+                   Toast.makeText(getApplicationContext(), "Successful sign in", Toast.LENGTH_LONG).show();
                }
                else{
                    Log.i("BackToRescue2", "Bien4: ");
