@@ -18,8 +18,8 @@ import retrofit2.Response;
 public class ObjetoActivity extends AppCompatActivity {
     public String username;
     private APIRest myapirest;
-    private Recycler recycler2;
-    private RecyclerView recyclerView2;
+    Recycler2 recycler2;
+    RecyclerView recyclerView2;
     ProgressDialog progressDialog;
 
     TextView textname;
@@ -33,7 +33,7 @@ public class ObjetoActivity extends AppCompatActivity {
         //setupActionBar();
 
         recyclerView2 = (RecyclerView) findViewById(R.id.recycler2);
-        recycler2 = new Recycler(this);
+        recycler2 = new Recycler2(this);
         recyclerView2.setAdapter(recycler2);
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
@@ -65,7 +65,7 @@ public class ObjetoActivity extends AppCompatActivity {
             public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if(response.isSuccessful()){
                     List<Objeto> newobjlist = response.body();
-                    recycler2.add
+                    recycler2.addObject(newobjlist);
                 }
                 progressDialog.hide();
             }
@@ -74,7 +74,8 @@ public class ObjetoActivity extends AppCompatActivity {
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
 
             }
-        }
+        });
     }
+}
 
 
